@@ -321,6 +321,27 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
 .foot a:hover{color:var(--volt)}
 .foot-bottom{margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'Space Mono';font-size:12px;color:var(--ink-faint)}
 .foot .blurb{color:var(--ink-dim);font-size:14.5px;max-width:280px;margin-top:14px}
+
+/* login modal */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-ov{position:absolute;inset:0;background:rgba(5,7,5,.78);backdrop-filter:blur(6px);animation:fade .25s ease}
+.modal-card{position:relative;z-index:2;width:100%;max-width:420px;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:22px;padding:34px 32px;box-shadow:0 50px 100px -40px rgba(0,0,0,.95);animation:pop .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.modal-card .x{position:absolute;top:16px;right:18px;background:none;border:0;color:var(--ink-faint);font-size:22px;cursor:pointer;line-height:1}
+.modal-card .x:hover{color:var(--volt)}
+.modal-card .m-mark{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--volt);color:#0a0c0a;font-size:22px;transform:rotate(-8deg);margin-bottom:18px}
+.modal-card h3{font-size:30px;margin-bottom:6px}
+.modal-card .sub{color:var(--ink-dim);font-size:14.5px;margin-bottom:22px}
+.modal-card label{display:block;font-family:'Space Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:14px 0 7px}
+.modal-card input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ink);font-family:'Space Mono';font-size:14px;outline:none;transition:border-color .2s}
+.modal-card input:focus{border-color:var(--volt)}
+.modal-card .m-btn{width:100%;justify-content:center;margin-top:22px}
+.modal-card .m-note{font-family:'Space Mono';font-size:12px;color:var(--clay);margin-top:16px;text-align:center;min-height:18px;line-height:1.45;display:none}
+.modal-card.denied .m-note{display:block;animation:fade .3s ease}
+.modal-card .m-foot{text-align:center;margin-top:18px;font-size:13.5px;color:var(--ink-dim)}
+.modal-card .m-foot a{color:var(--volt)}
+.modal-card .beta-tag{display:inline-block;font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);border:1px solid rgba(90,209,230,.3);background:rgba(90,209,230,.08);padding:4px 10px;border-radius:100px;margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -341,7 +362,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
       <a href="#pricing">Pricing</a>
     </nav>
     <div class="nav-cta">
-      <a href="#product" class="btn btn-ghost">Log in</a>
+      <button type="button" class="btn btn-ghost" onclick="openLogin()">Log in</button>
       <a href="#join" class="btn btn-primary">Start free</a>
     </div>
   </div>
@@ -738,6 +759,27 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
   </div>
 </section>
 
+<!-- LOGIN MODAL (mock — closed beta, no real auth) -->
+<div class="modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Log in">
+  <div class="modal-ov" onclick="closeLogin()"></div>
+  <div class="modal-card" id="loginCard">
+    <button class="x" type="button" onclick="closeLogin()" aria-label="Close">×</button>
+    <div class="m-mark">▲</div>
+    <span class="beta-tag">● Closed beta</span>
+    <h3>Welcome back</h3>
+    <div class="sub">Log in to your season cockpit.</div>
+    <form id="loginForm" onsubmit="return attemptLogin(event)">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@athlete-on-tour.com" required autocomplete="off" />
+      <label for="loginPass">Password</label>
+      <input type="password" id="loginPass" placeholder="••••••••" required autocomplete="off" />
+      <button class="btn btn-primary m-btn" type="submit">Log in →</button>
+      <div class="m-note" id="loginNote"></div>
+    </form>
+    <div class="m-foot">Not in the beta yet? <a href="#join" onclick="closeLogin()">Join the waitlist ↗</a></div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
@@ -799,6 +841,22 @@ document.querySelectorAll('.tag-chips .chip').forEach(c=>c.addEventListener('cli
 
 // waitlist
 function joinWaitlist(e){e.preventDefault();document.getElementById('signupForm').classList.add('done');document.getElementById('emailInput').value='';return false;}
+
+// login modal — mock only. There is no backend and no auth; every attempt is denied by design.
+const loginModal=document.getElementById('loginModal');
+const loginCard=document.getElementById('loginCard');
+function openLogin(){loginModal.classList.add('open');loginModal.setAttribute('aria-hidden','false');setTimeout(()=>document.getElementById('loginEmail').focus(),50);}
+function closeLogin(){loginModal.classList.remove('open');loginModal.setAttribute('aria-hidden','true');loginCard.classList.remove('denied');document.getElementById('loginForm').reset();}
+function attemptLogin(e){
+  e.preventDefault();
+  // no credential is ever accepted — closed beta, invite-only
+  const note=document.getElementById('loginNote');
+  note.textContent="Closed beta — logins are invite-only right now. Join the waitlist and we'll send your access.";
+  loginCard.classList.add('denied');
+  document.getElementById('loginPass').value='';
+  return false;
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLogin();});
 </script>
 </body>
 </html>
