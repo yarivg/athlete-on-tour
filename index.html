@@ -286,23 +286,19 @@ section{position:relative;z-index:2}
 .price li{font-size:15px;color:var(--ink-dim);display:flex;gap:11px;align-items:flex-start}
 .price li::before{content:"›";color:var(--volt);font-weight:700;font-family:'Space Mono'}
 
-/* team */
-.team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:900px){.team{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.team{grid-template-columns:1fr}}
-.member{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);transition:transform .3s,border-color .3s}
-.member:hover{transform:translateY(-6px);border-color:var(--volt)}
-.member.founder{border-color:var(--volt-deep);background:linear-gradient(180deg,rgba(212,255,63,.06),var(--panel))}
-.member .mph{height:230px;background-size:cover;background-position:center top;position:relative}
-.member .mph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,var(--panel))}
-.member .mb{padding:18px 20px 22px}
-.member .mb .role{font-family:'Space Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--volt-deep)}
-.member.founder .mb .role{color:var(--volt)}
-.member .mb h3{font-size:21px;margin:7px 0 4px;text-transform:none;font-family:'Anton';letter-spacing:.01em}
-.member .mb p{font-size:13.5px;color:var(--ink-dim);line-height:1.45}
-.member .tagrow{display:flex;gap:10px;margin-top:12px}
-.member .tagrow a{font-family:'Space Mono';font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
-.member .tagrow a:hover{color:var(--volt)}
+/* team / founder */
+.founder-card{display:grid;grid-template-columns:300px 1fr;gap:0;max-width:780px;margin:0 auto;border:1px solid var(--volt-deep);border-radius:var(--radius);overflow:hidden;background:linear-gradient(120deg,rgba(212,255,63,.07),var(--panel));transition:transform .3s}
+.founder-card:hover{transform:translateY(-5px)}
+@media(max-width:620px){.founder-card{grid-template-columns:1fr}}
+.fc-photo{min-height:320px;background-size:cover;background-position:center top}
+@media(max-width:620px){.fc-photo{min-height:300px}}
+.fc-body{padding:34px 32px;display:flex;flex-direction:column;justify-content:center}
+.fc-body .role{font-family:'Space Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--volt)}
+.fc-body h3{font-size:30px;margin:9px 0 12px;text-transform:none;font-family:'Anton';letter-spacing:.01em}
+.fc-body p{font-size:15px;color:var(--ink-dim);line-height:1.55}
+.fc-body .tagrow{display:flex;gap:14px;margin-top:18px}
+.fc-body .tagrow a{font-family:'Space Mono';font-size:12px;color:var(--ink-faint);letter-spacing:.05em;border:1px solid var(--line);padding:8px 14px;border-radius:100px;transition:.2s}
+.fc-body .tagrow a:hover{color:var(--volt);border-color:var(--volt)}
 .fbadge{display:inline-block;font-family:'Space Mono';font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--volt);color:#0a0c0a;font-weight:700;padding:3px 9px;border-radius:100px;margin-left:8px;vertical-align:middle}
 
 /* final cta */
@@ -447,10 +443,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
       <p>Team sports get leagues and fixtures handed to them. Individual athletes hunt across dozens of federation sites, forums and PDFs. We pulled it all into one feed.</p>
     </div>
     <div class="sports reveal">
-      <div class="sport"><div class="ph" data-img="cycling,road,race"></div><div class="body"><div class="ico">🚴</div><h3>Cycling</h3><div class="cnt">9,840 events</div></div></div>
-      <div class="sport"><div class="ph" data-img="marathon,running,road"></div><div class="body"><div class="ico">🏃</div><h3>Running</h3><div class="cnt">14,210 events</div></div></div>
-      <div class="sport"><div class="ph" data-img="chess,tournament,board"></div><div class="body"><div class="ico">♟️</div><h3>Chess</h3><div class="cnt">3,120 tournaments</div></div></div>
-      <div class="sport"><div class="ph" data-img="triathlon,swim,open-water"></div><div class="body"><div class="ico">🏊</div><h3>Triathlon</h3><div class="cnt">4,070 races</div></div></div>
+      <div class="sport"><div class="ph" data-img="assets/sport-cycling.jpg"></div><div class="body"><div class="ico">🚴</div><h3>Cycling</h3><div class="cnt">9,840 events</div></div></div>
+      <div class="sport"><div class="ph" data-img="assets/sport-running.jpg"></div><div class="body"><div class="ico">🏃</div><h3>Running</h3><div class="cnt">14,210 events</div></div></div>
+      <div class="sport"><div class="ph" data-img="assets/sport-chess.jpg"></div><div class="body"><div class="ico">♟️</div><h3>Chess</h3><div class="cnt">3,120 tournaments</div></div></div>
+      <div class="sport"><div class="ph" data-img="assets/sport-triathlon.jpg"></div><div class="body"><div class="ico">🏊</div><h3>Triathlon</h3><div class="cnt">4,070 races</div></div></div>
     </div>
   </div>
 </section>
@@ -465,35 +461,35 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
     </div>
     <div class="events-grid reveal">
       <div class="ecard">
-        <div class="pic" data-img="cape-town,cycling,road"><span class="badge">Cycling</span><span class="dt">08 Mar 2026</span></div>
+        <div class="pic" data-img="assets/ev-capetown.jpg"><span class="badge">Cycling</span><span class="dt">08 Mar 2026</span></div>
         <div class="ec-body"><h3>Cape Town Cycle Tour</h3><div class="loc">Cape Town, South Africa · 109 km</div><div class="tags"><span class="t">Gran Fondo</span><span class="t">35k riders</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="boston,marathon,running"><span class="badge">Running</span><span class="dt">20 Apr 2026</span></div>
+        <div class="pic" data-img="assets/ev-boston.jpg"><span class="badge">Running</span><span class="dt">20 Apr 2026</span></div>
         <div class="ec-body"><h3>Boston Marathon</h3><div class="loc">Boston, USA · 42.2 km</div><div class="tags"><span class="t">Major</span><span class="t">Qualifier</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="trail,mountain,ultra"><span class="badge">Trail / MTB</span><span class="dt">23 Aug 2026</span></div>
+        <div class="pic" data-img="assets/ev-leadville.jpg"><span class="badge">Trail / MTB</span><span class="dt">23 Aug 2026</span></div>
         <div class="ec-body"><h3>Leadville Trail 100 MTB</h3><div class="loc">Colorado, USA · 3,000 m+</div><div class="tags"><span class="t">Lottery</span><span class="t">Altitude</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="chess,tournament,competition"><span class="badge">Chess</span><span class="dt">Jan 2026</span></div>
+        <div class="pic" data-img="assets/ev-tata.jpg"><span class="badge">Chess</span><span class="dt">Jan 2026</span></div>
         <div class="ec-body"><h3>Tata Steel Chess Masters</h3><div class="loc">Wijk aan Zee, Netherlands</div><div class="tags"><span class="t">Super-GM</span><span class="t">Open side</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="alps,trail,running,mountain"><span class="badge">Trail</span><span class="dt">28 Aug 2026</span></div>
+        <div class="pic" data-img="assets/ev-utmb.jpg"><span class="badge">Trail</span><span class="dt">28 Aug 2026</span></div>
         <div class="ec-body"><h3>UTMB Mont-Blanc</h3><div class="loc">Chamonix, France · 171 km</div><div class="tags"><span class="t">Running stones</span><span class="t">Iconic</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="berlin,marathon,city,running"><span class="badge">Running</span><span class="dt">27 Sep 2026</span></div>
+        <div class="pic" data-img="assets/ev-berlin.jpg"><span class="badge">Running</span><span class="dt">27 Sep 2026</span></div>
         <div class="ec-body"><h3>Berlin Marathon</h3><div class="loc">Berlin, Germany · 42.2 km</div><div class="tags"><span class="t">Major</span><span class="t">Fast course</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="triathlon,ironman,swimming"><span class="badge">Triathlon</span><span class="dt">Sep 2026</span></div>
+        <div class="pic" data-img="assets/ev-ironman.jpg"><span class="badge">Triathlon</span><span class="dt">Sep 2026</span></div>
         <div class="ec-body"><h3>IRONMAN World Champs</h3><div class="loc">Nice, France · 226 km</div><div class="tags"><span class="t">Qualify only</span><span class="t">Long course</span></div></div>
       </div>
       <div class="ecard">
-        <div class="pic" data-img="mountain-bike,france,forest"><span class="badge">MTB</span><span class="dt">11 Oct 2026</span></div>
+        <div class="pic" data-img="assets/ev-roc.jpg"><span class="badge">MTB</span><span class="dt">11 Oct 2026</span></div>
         <div class="ec-body"><h3>Roc d'Azur</h3><div class="loc">Fréjus, France · 20k+ riders</div><div class="tags"><span class="t">Festival</span><span class="t">World's largest</span></div></div>
       </div>
     </div>
@@ -608,7 +604,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
         <p>Search 48k+ events by distance, terrain, prize money, federation, qualification path and travel radius. Saved searches alert you the moment registration opens.</p>
         <ul><li>Smart filters across 38 sports</li><li>Fit score based on your level &amp; history</li><li>Instant alerts on new &amp; reopened events</li></ul>
       </div>
-      <div class="fimg" data-img="cyclist,mountain,road,europe"><span class="ov">Discover · 48,200 events</span></div>
+      <div class="fimg" data-img="assets/feat-discover.jpg"><span class="ov">Discover · 48,200 events</span></div>
     </div>
 
     <div class="frow flip reveal">
@@ -618,7 +614,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
         <p>Tag A/B/C races and we lay out build, peak and taper phases automatically — then export to Google Calendar, TrainingPeaks and your watch.</p>
         <ul><li>Auto build / peak / taper blocks</li><li>Conflict &amp; recovery warnings</li><li>One-click export &amp; sync</li></ul>
       </div>
-      <div class="fimg" data-img="running,sunrise,training,track"><span class="ov">Schedule · auto periodization</span></div>
+      <div class="fimg" data-img="assets/feat-schedule.jpg"><span class="ov">Schedule · auto periodization</span></div>
     </div>
 
     <div class="frow reveal">
@@ -628,7 +624,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
         <p>Flights, lodging near the start, rental gear, bike-box rules and start-list intel — tracked per event so race week runs itself.</p>
         <ul><li>Travel &amp; lodging near the start line</li><li>Start-list &amp; past-results intel</li><li>Find a travel crew to split costs</li></ul>
       </div>
-      <div class="fimg" data-img="travel,airport,bike,luggage"><span class="ov">Tour · logistics handled</span></div>
+      <div class="fimg" data-img="assets/feat-tour.jpg"><span class="ov">Tour · logistics handled</span></div>
     </div>
   </div>
 </section>
@@ -667,9 +663,9 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
       <h2>Why they <span class="accent">switched</span></h2>
     </div>
     <div class="quotes reveal">
-      <div class="quote"><div class="stars">★★★★★</div><p>“I used to keep my whole race year in a spreadsheet and three forums. Now it's one feed and the deadline alerts alone have saved my season twice.”</p><div class="who"><div class="av" data-img="portrait,woman,athlete"></div><div><div class="n">Elena Marchetti</div><div class="r">Gran Fondo · Italy</div></div></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><p>“As a masters runner I travel for races. The travel + start-list view means I rock up knowing the course and where I'm sleeping. Game changer.”</p><div class="who"><div class="av" data-img="portrait,man,runner"></div><div><div class="n">David Køhler</div><div class="r">Marathon · Denmark</div></div></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><p>“Even for chess it nails it — open tournaments, rating bands, entry fees and travel in one place. The AI planner found two events I'd never have spotted.”</p><div class="who"><div class="av" data-img="portrait,man,glasses"></div><div><div class="n">Anush Sargsyan</div><div class="r">Chess · Armenia</div></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“I used to keep my whole race year in a spreadsheet and three forums. Now it's one feed and the deadline alerts alone have saved my season twice.”</p><div class="who"><div class="av" data-img="assets/av-1.jpg"></div><div><div class="n">Elena Marchetti</div><div class="r">Gran Fondo · Italy</div></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“As a masters runner I travel for races. The travel + start-list view means I rock up knowing the course and where I'm sleeping. Game changer.”</p><div class="who"><div class="av" data-img="assets/av-2.jpg"></div><div><div class="n">David Køhler</div><div class="r">Marathon · Denmark</div></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“Even for chess it nails it — open tournaments, rating bands, entry fees and travel in one place. The AI planner found two events I'd never have spotted.”</p><div class="who"><div class="av" data-img="assets/av-3.jpg"></div><div><div class="n">Anush Sargsyan</div><div class="r">Chess · Armenia</div></div></div></div>
     </div>
   </div>
 </section>
@@ -678,46 +674,17 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
 <section class="sec" id="team" style="padding-top:30px">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">// The crew behind the tour</span>
-      <h2>Built by <span class="accent">athletes</span>,<br>for athletes</h2>
-      <p>A small team that got tired of planning seasons across spreadsheets and forums — so we built the tool we wanted.</p>
+      <span class="eyebrow">// The athlete behind the tour</span>
+      <h2>Built by an <span class="accent">athlete</span>,<br>for athletes</h2>
+      <p>One founder who got tired of planning seasons across spreadsheets and forums — so I built the tool I wanted.</p>
     </div>
-    <div class="team reveal">
-      <div class="member founder">
-        <div class="mph" style="background-image:url('assets/yariv.jpg');background-size:cover;background-position:center top"></div>
-        <div class="mb">
-          <div class="role">Founder &amp; CEO<span class="fbadge">Founder</span></div>
-          <h3>Yariv Gavriel</h3>
-          <p>Engineer, endurance athlete and lifelong solo-sport competitor. Started Athlete on Tour after one too many missed registration deadlines.</p>
-          <div class="tagrow"><a href="#">LinkedIn ↗</a><a href="mailto:yariv@athlete-on-tour.com">Email ↗</a></div>
-        </div>
-      </div>
-      <div class="member">
-        <div class="mph" data-img="portrait,woman,designer"></div>
-        <div class="mb">
-          <div class="role">Head of Product</div>
-          <h3>Maya Lindqvist</h3>
-          <p>Former triathlete and product lead. Turns messy event data into a calendar athletes actually love.</p>
-          <div class="tagrow"><a href="#">LinkedIn ↗</a></div>
-        </div>
-      </div>
-      <div class="member">
-        <div class="mph" data-img="portrait,man,engineer,developer"></div>
-        <div class="mb">
-          <div class="role">Founding Engineer</div>
-          <h3>Tomás Reyes</h3>
-          <p>Builds the ingestion engine pulling 48k+ events from federations worldwide. Weekend gravel racer.</p>
-          <div class="tagrow"><a href="#">GitHub ↗</a></div>
-        </div>
-      </div>
-      <div class="member">
-        <div class="mph" data-img="portrait,woman,scientist,ai"></div>
-        <div class="mb">
-          <div class="role">AI &amp; Data</div>
-          <h3>Dr. Priya Nair</h3>
-          <p>Leads Tour AI — the season planner and recommendation models. PhD in ML, marathoner.</p>
-          <div class="tagrow"><a href="#">LinkedIn ↗</a></div>
-        </div>
+    <div class="founder-card reveal">
+      <div class="fc-photo" style="background-image:url('assets/yariv.jpg')"></div>
+      <div class="fc-body">
+        <div class="role">Founder &amp; CEO<span class="fbadge">Founder</span></div>
+        <h3>Yariv Gavriel</h3>
+        <p>Engineer, endurance athlete and lifelong solo-sport competitor. Started Athlete on Tour after one too many missed registration deadlines — building the season engine he always wished existed.</p>
+        <div class="tagrow"><a href="https://www.linkedin.com/in/yariv-gavriel" target="_blank" rel="noopener">LinkedIn ↗</a></div>
       </div>
     </div>
   </div>
@@ -780,7 +747,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
       </div>
       <div><h4>Product</h4><a href="#sports">Sports</a><a href="#events">Events</a><a href="#ai">Tour AI</a><a href="#pricing">Pricing</a></div>
       <div><h4>Sports</h4><a href="#sports">Cycling</a><a href="#sports">Running</a><a href="#sports">Triathlon</a><a href="#sports">Chess</a></div>
-      <div><h4>Company</h4><a href="#team">Team</a><a href="#join">Join waitlist</a><a href="mailto:hello@athlete-on-tour.com">hello@athlete-on-tour.com</a><a href="#">Manifesto</a><a href="#">Careers</a></div>
+      <div><h4>Company</h4><a href="#team">Team</a><a href="#join">Join waitlist</a><a href="https://www.linkedin.com/in/yariv-gavriel" target="_blank" rel="noopener">LinkedIn ↗</a></div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Athlete on Tour</span>
@@ -790,12 +757,11 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
 </footer>
 
 <script>
-// lazy-load images via loremflickr with gradient fallback
+// set images from local assets, gradient fallback if one is missing
 const palettes=['linear-gradient(135deg,#1b211a,#2a3327)','linear-gradient(135deg,#16203a,#1b211a)','linear-gradient(135deg,#2a1a14,#1b211a)'];
 document.querySelectorAll('[data-img]').forEach((el,i)=>{
   el.style.background=palettes[i%palettes.length];el.style.backgroundSize='cover';
-  const kw=encodeURIComponent(el.dataset.img);
-  const url='https://loremflickr.com/640/440/'+kw+'?lock='+(i+11);
+  const url=el.dataset.img;
   const img=new Image();
   img.onload=()=>{el.style.backgroundImage="url('"+url+"')";el.style.backgroundPosition='center';el.style.backgroundSize='cover';};
   img.src=url;
