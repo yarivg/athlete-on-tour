@@ -29,6 +29,14 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+/* keep autofilled inputs readable (browser would force light-on-light otherwise) */
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active{
+  -webkit-text-fill-color:#eef2e9!important;
+  caret-color:#eef2e9;
+  -webkit-box-shadow:0 0 0 1000px #0a0c0a inset!important;
+  box-shadow:0 0 0 1000px #0a0c0a inset!important;
+  transition:background-color 9999s ease-out 0s;
+}
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);
@@ -359,7 +367,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
       <a href="#ai">Tour AI</a>
       <a href="#product">Product</a>
       <a href="#team">Team</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#join">Join beta</a>
     </nav>
     <div class="nav-cta">
       <button type="button" class="btn btn-ghost" onclick="openLogin()">Log in</button>
@@ -711,34 +719,6 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="sec" id="pricing" style="padding-top:30px">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">// Free in beta · founding rates locked for launch</span>
-      <h2>Pricing when<br>we <span class="accent">launch</span></h2>
-      <p>The beta is <strong style="color:var(--ink)">free</strong> for every founding athlete. These are the plans we'll roll out at public launch — join the waitlist now and your founding rate is grandfathered for good.</p>
-    </div>
-    <div class="prices reveal">
-      <div class="price">
-        <div class="pname">Base</div><div class="amt">€0<small>/forever</small></div>
-        <ul><li>Full event discovery, all 38 sports</li><li>Personal season calendar</li><li>3 deadline alerts</li><li>Google Calendar export</li></ul>
-        <a href="#join" class="btn btn-ghost" style="justify-content:center">Join the beta</a>
-      </div>
-      <div class="price hot">
-        <div class="pname">Pro</div><div class="amt">€7<small>/mo at launch</small></div>
-        <ul><li>Everything in Base</li><li><strong style="color:var(--ink)">Tour AI</strong> season planner</li><li>Unlimited alerts &amp; saved searches</li><li>Tour logistics + travel crew</li><li>Start-list intel &amp; all integrations</li></ul>
-        <a href="#join" class="btn btn-primary" style="justify-content:center">Get early access</a>
-      </div>
-      <div class="price">
-        <div class="pname">Club</div><div class="amt">€29<small>/mo at launch</small></div>
-        <ul><li>Up to 20 athletes</li><li>Coach view &amp; shared calendars</li><li>Squad travel coordination</li><li>Priority new-sport requests</li></ul>
-        <a href="#join" class="btn btn-ghost" style="justify-content:center">Talk to us</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="sec" id="join" style="padding-top:30px">
   <div class="wrap">
@@ -788,7 +768,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;back
         <div class="brand"><span class="mark">▲</span><span>Athlete on Tour</span></div>
         <p class="blurb">The AI season engine for individual-sport athletes. Discover, schedule, and tour — worldwide.</p>
       </div>
-      <div><h4>Product</h4><a href="#sports">Sports</a><a href="#events">Events</a><a href="#ai">Tour AI</a><a href="#pricing">Pricing</a></div>
+      <div><h4>Product</h4><a href="#sports">Sports</a><a href="#events">Events</a><a href="#ai">Tour AI</a><a href="#join">Join beta</a></div>
       <div><h4>Sports</h4><a href="#sports">Cycling</a><a href="#sports">Running</a><a href="#sports">Triathlon</a><a href="#sports">Chess</a></div>
       <div><h4>Company</h4><a href="#team">Team</a><a href="#join">Join waitlist</a><a href="https://www.linkedin.com/in/yariv-gavriel" target="_blank" rel="noopener">LinkedIn ↗</a></div>
     </div>
