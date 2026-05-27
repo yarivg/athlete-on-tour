@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Athlete on Tour — Find every event in your sport. Plan the whole season.</title>
-<meta name="description" content="Athlete on Tour is the season engine for individual-sport athletes. Discover tournaments and races worldwide, build your race calendar, and plan travel, peaks and logistics in one place." />
+<meta name="description" content="Athlete on Tour is the AI season engine for individual-sport athletes. Discover tournaments and races worldwide, build your race calendar, and plan travel, peaks and logistics in one place." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,7 +40,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ---------- grain + topo atmosphere ---------- */
 body::before{
   content:"";
   position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -49,109 +48,62 @@ body::before{
 }
 
 h1,h2,h3,.display{
-  font-family:'Anton',sans-serif;
-  font-weight:400;
-  text-transform:uppercase;
-  line-height:.92;
-  letter-spacing:.01em;
+  font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;
 }
 .mono{font-family:'Space Mono',monospace}
-.eyebrow{
-  font-family:'Space Mono',monospace;
-  font-size:12.5px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--volt-deep);
-}
+.eyebrow{font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--volt-deep)}
 a{color:inherit;text-decoration:none}
-.accent{color:var(--volt)}
-.clay{color:var(--clay)}
+.accent{color:var(--volt)} .clay{color:var(--clay)} .sky{color:var(--sky)}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:2}
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-  padding:15px 26px;border-radius:100px;border:1px solid transparent;
-  cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,color .25s,box-shadow .25s;
-  white-space:nowrap;
-}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:15px 26px;border-radius:100px;border:1px solid transparent;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,color .25s,box-shadow .25s;white-space:nowrap}
 .btn-primary{background:var(--volt);color:#0a0c0a;font-weight:700;box-shadow:0 0 0 0 rgba(212,255,63,.5)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(212,255,63,.55)}
 .btn-ghost{border-color:var(--line);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--volt);color:var(--volt);transform:translateY(-2px)}
 
-/* ---------- nav ---------- */
-header.nav{
-  position:sticky;top:0;z-index:50;
-  backdrop-filter:blur(14px);
-  background:rgba(10,12,10,.72);
-  border-bottom:1px solid var(--line);
-}
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,12,10,.72);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:12px;font-family:'Anton';font-size:22px;text-transform:uppercase;letter-spacing:.02em}
-.brand .mark{
-  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
-  background:var(--volt);color:#0a0c0a;font-size:20px;transform:rotate(-8deg);
-}
+.brand .mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--volt);color:#0a0c0a;font-size:20px;transform:rotate(-8deg)}
 .brand small{font-family:'Space Mono';font-size:10px;letter-spacing:.2em;color:var(--ink-faint);display:block;margin-top:2px}
 .nav-links{display:flex;align-items:center;gap:30px;font-size:14.5px;color:var(--ink-dim)}
 .nav-links a:hover{color:var(--volt)}
 .nav-cta{display:flex;align-items:center;gap:14px}
-@media(max-width:860px){.nav-links{display:none}.nav-cta .btn-ghost{display:none}}
+@media(max-width:900px){.nav-links{display:none}.nav-cta .btn-ghost{display:none}}
 
-/* ---------- hero ---------- */
-.hero{position:relative;padding:90px 0 70px;overflow:hidden}
-.hero-topo{
-  position:absolute;inset:-10% -20% auto auto;width:1100px;height:900px;z-index:1;
-  opacity:.5;pointer-events:none;
-  -webkit-mask-image:radial-gradient(circle at 70% 30%,#000 0%,transparent 65%);
-          mask-image:radial-gradient(circle at 70% 30%,#000 0%,transparent 65%);
-}
+/* hero */
+.hero{position:relative;padding:80px 0 60px;overflow:hidden}
+.hero-topo{position:absolute;inset:-10% -20% auto auto;width:1100px;height:900px;z-index:1;opacity:.5;pointer-events:none;-webkit-mask-image:radial-gradient(circle at 70% 30%,#000 0%,transparent 65%);mask-image:radial-gradient(circle at 70% 30%,#000 0%,transparent 65%)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-topo{opacity:.3}}
-
-.hero h1{font-size:clamp(48px,7.4vw,104px)}
+.hero h1{font-size:clamp(46px,7vw,98px)}
 .hero h1 .line{display:block;overflow:hidden}
 .hero h1 .line span{display:block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.85,.25,1) forwards}
 .hero h1 .line:nth-child(2) span{animation-delay:.09s}
 .hero h1 .line:nth-child(3) span{animation-delay:.18s}
 @keyframes rise{to{transform:translateY(0)}}
-.hero p.lead{margin-top:26px;font-size:19px;color:var(--ink-dim);max-width:480px;opacity:0;animation:fade .8s ease .5s forwards}
-.hero .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fade .8s ease .65s forwards}
-.hero .trust{margin-top:26px;font-family:'Space Mono';font-size:12px;color:var(--ink-faint);letter-spacing:.05em;opacity:0;animation:fade .8s ease .8s forwards}
+.hero p.lead{margin-top:24px;font-size:19px;color:var(--ink-dim);max-width:490px;opacity:0;animation:fade .8s ease .5s forwards}
+.hero .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fade .8s ease .65s forwards}
+.hero .trust{margin-top:24px;font-family:'Space Mono';font-size:12px;color:var(--ink-faint);letter-spacing:.05em;opacity:0;animation:fade .8s ease .8s forwards}
 @keyframes fade{to{opacity:1}}
-
-.tag-chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px;opacity:0;animation:fade .8s ease .35s forwards}
-.chip{
-  font-family:'Space Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
-  padding:7px 13px;border:1px solid var(--line);border-radius:100px;color:var(--ink-dim);
-}
+.tag-chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px;opacity:0;animation:fade .8s ease .35s forwards}
+.chip{font-family:'Space Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);border-radius:100px;color:var(--ink-dim);cursor:pointer;transition:.2s}
 .chip.on{background:var(--volt);color:#0a0c0a;border-color:var(--volt);font-weight:700}
 
 /* hero product card */
-.hero-card{
-  position:relative;z-index:3;
-  background:linear-gradient(180deg,var(--panel),var(--bg-2));
-  border:1px solid var(--line);border-radius:var(--radius);
-  padding:18px;box-shadow:0 40px 80px -40px rgba(0,0,0,.9);
-  opacity:0;animation:fade .9s ease .55s forwards, floaty 7s ease-in-out 1.3s infinite;
-}
+.hero-card{position:relative;z-index:3;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 40px 80px -40px rgba(0,0,0,.9);opacity:0;animation:fade .9s ease .55s forwards, floaty 7s ease-in-out 1.3s infinite}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 .hc-top{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 14px;border-bottom:1px solid var(--line)}
 .hc-top .ttl{font-family:'Space Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
 .hc-dot{width:9px;height:9px;border-radius:50%;background:var(--volt);box-shadow:0 0 12px var(--volt);display:inline-block;margin-right:7px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.event-row{
-  display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
-  padding:14px 8px;border-bottom:1px solid var(--line);transition:background .2s;
-}
-.event-row:hover{background:var(--panel-2)}
-.event-row:last-child{border-bottom:0}
-.ev-date{
-  width:54px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:7px 0;
-}
+.event-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:13px 8px;border-bottom:1px solid var(--line);transition:background .2s}
+.event-row:hover{background:var(--panel-2)} .event-row:last-child{border-bottom:0}
+.ev-date{width:54px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:7px 0}
 .ev-date .d{font-family:'Anton';font-size:22px;line-height:1}
 .ev-date .m{font-family:'Space Mono';font-size:10px;color:var(--ink-faint);letter-spacing:.1em}
 .ev-name{font-weight:600;font-size:15px}
@@ -161,49 +113,63 @@ header.nav{
 .pill-soon{background:rgba(90,209,230,.1);color:var(--sky);border:1px solid rgba(90,209,230,.28)}
 .pill-watch{background:rgba(255,106,61,.1);color:var(--clay);border:1px solid rgba(255,106,61,.3)}
 
-/* ---------- marquee ---------- */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:18px 0}
-.marquee-track{display:flex;gap:60px;white-space:nowrap;width:max-content;animation:scroll 32s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.marquee span{font-family:'Anton';font-size:26px;text-transform:uppercase;color:var(--ink-faint);letter-spacing:.03em;display:inline-flex;align-items:center;gap:60px}
-.marquee span::after{content:"●";color:var(--volt-deep);font-size:11px}
+/* logo cloud */
+.logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);padding:30px 0}
+.logos .lbl{text-align:center;font-family:'Space Mono';font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px}
+.logo-strip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 38px}
+.logo-strip .lg{font-family:'Anton';font-size:22px;text-transform:uppercase;color:var(--ink-faint);letter-spacing:.02em;opacity:.7;transition:.25s;display:flex;align-items:center;gap:9px}
+.logo-strip .lg:hover{opacity:1;color:var(--ink)}
+.logo-strip .lg span{font-size:18px}
 
-/* ---------- section scaffolding ---------- */
+/* section scaffolding */
 section{position:relative;z-index:2}
-.sec{padding:100px 0}
-.sec-head{max-width:680px;margin-bottom:54px}
+.sec{padding:96px 0}
+.sec-head{max-width:700px;margin-bottom:50px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .sec-head h2{font-size:clamp(34px,5vw,62px);margin-top:14px}
 .sec-head p{color:var(--ink-dim);margin-top:18px;font-size:18px}
-
-/* reveal on scroll */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* ---------- stats ---------- */
+/* metrics */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
 .stat{background:var(--bg);padding:34px 26px}
 .stat .num{font-family:'Anton';font-size:clamp(40px,5vw,58px);color:var(--volt);line-height:1}
 .stat .lbl{font-family:'Space Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-top:10px}
 
-/* ---------- sports grid ---------- */
+/* sports grid */
 .sports{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media(max-width:900px){.sports{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.sports{grid-template-columns:1fr}}
-.sport{
-  position:relative;border:1px solid var(--line);border-radius:var(--radius);
-  padding:26px 22px;background:var(--panel);overflow:hidden;transition:transform .3s,border-color .3s;
-  min-height:170px;display:flex;flex-direction:column;justify-content:space-between;
-}
+.sport{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);transition:transform .3s,border-color .3s;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end}
 .sport:hover{transform:translateY(-6px);border-color:var(--volt)}
-.sport .ico{font-size:34px}
-.sport h3{font-size:24px;margin-top:14px}
-.sport .cnt{font-family:'Space Mono';font-size:12px;color:var(--ink-faint);margin-top:6px;letter-spacing:.05em}
-.sport::after{content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--volt) 0%,transparent 70%);opacity:0;transition:opacity .3s}
-.sport:hover::after{opacity:.12}
+.sport .ph{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.42;transition:.3s}
+.sport:hover .ph{opacity:.6;transform:scale(1.06)}
+.sport::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--panel) 95%)}
+.sport .body{position:relative;padding:22px}
+.sport .ico{font-size:30px}
+.sport h3{font-size:24px;margin-top:8px}
+.sport .cnt{font-family:'Space Mono';font-size:12px;color:var(--volt);margin-top:6px;letter-spacing:.05em}
 
-/* ---------- how it works ---------- */
+/* featured events */
+.events-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1000px){.events-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.events-grid{grid-template-columns:1fr}}
+.ecard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.ecard:hover{transform:translateY(-6px);border-color:var(--volt-deep)}
+.ecard .pic{height:150px;background-size:cover;background-position:center;position:relative}
+.ecard .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(21,26,20,.85))}
+.ecard .pic .badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Space Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(10,12,10,.7);backdrop-filter:blur(4px);border:1px solid var(--line);padding:5px 10px;border-radius:100px;color:var(--volt)}
+.ecard .pic .dt{position:absolute;bottom:10px;left:14px;z-index:2;font-family:'Anton';font-size:20px;letter-spacing:.03em}
+.ecard .ec-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column}
+.ecard h3{font-size:19px;line-height:1.05}
+.ecard .loc{font-family:'Space Mono';font-size:12px;color:var(--ink-faint);margin-top:8px}
+.ecard .tags{margin-top:auto;display:flex;gap:7px;flex-wrap:wrap;padding-top:14px}
+.ecard .t{font-family:'Space Mono';font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);border-radius:100px;padding:4px 9px}
+.real-note{font-family:'Space Mono';font-size:11.5px;color:var(--ink-faint);margin-top:18px;letter-spacing:.04em}
+
+/* how */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media(max-width:860px){.steps{grid-template-columns:1fr}}
 .step{border-top:2px solid var(--volt);padding-top:24px}
@@ -211,12 +177,38 @@ section{position:relative;z-index:2}
 .step h3{font-size:26px;margin:14px 0 12px}
 .step p{color:var(--ink-dim);font-size:16px}
 
-/* ---------- dashboard mock ---------- */
-.dash{
-  background:linear-gradient(180deg,var(--panel),var(--bg-2));
-  border:1px solid var(--line);border-radius:24px;overflow:hidden;
-  box-shadow:0 50px 100px -50px rgba(0,0,0,.9);
-}
+/* AI section */
+.ai{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(120% 140% at 80% 10%,rgba(90,209,230,.1),transparent 50%),linear-gradient(180deg,var(--panel),var(--bg-2))}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:900px){.ai-grid{grid-template-columns:1fr}}
+.ai-copy{padding:54px 48px}
+@media(max-width:560px){.ai-copy{padding:38px 26px}}
+.ai-copy h2{font-size:clamp(32px,4.5vw,54px);margin:14px 0 18px}
+.ai-copy p{color:var(--ink-dim);font-size:17px}
+.ai-feats{margin-top:26px;display:flex;flex-direction:column;gap:16px}
+.ai-feats .af{display:flex;gap:14px;align-items:flex-start}
+.ai-feats .af .ai-ic{flex:0 0 auto;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(90,209,230,.12);border:1px solid rgba(90,209,230,.3);font-size:19px}
+.ai-feats .af h4{font-size:16px;font-family:'Archivo';font-weight:700;text-transform:none}
+.ai-feats .af p{font-size:14.5px;margin-top:3px}
+/* AI chat mock */
+.ai-demo{border-left:1px solid var(--line);padding:40px;display:flex;flex-direction:column;justify-content:center;background:rgba(0,0,0,.18)}
+@media(max-width:900px){.ai-demo{border-left:0;border-top:1px solid var(--line)}}
+.chat{display:flex;flex-direction:column;gap:14px}
+.bubble{max-width:88%;padding:14px 16px;border-radius:16px;font-size:14.5px;line-height:1.5}
+.bubble.user{align-self:flex-end;background:var(--volt);color:#0a0c0a;border-bottom-right-radius:5px;font-weight:500}
+.bubble.bot{align-self:flex-start;background:var(--panel);border:1px solid var(--line);border-bottom-left-radius:5px}
+.bubble.bot .bhead{font-family:'Space Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.bubble.bot .bhead .hc-dot{background:var(--sky);box-shadow:0 0 10px var(--sky)}
+.bot-ev{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.bot-ev:last-of-type{border-bottom:0}
+.bot-ev .be-m{color:var(--ink-faint);font-family:'Space Mono';font-size:11.5px}
+.typing{align-self:flex-start;display:flex;gap:5px;padding:14px 18px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-faint);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+/* dashboard mock */
+.dash{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 50px 100px -50px rgba(0,0,0,.9)}
 .dash-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--bg-2)}
 .dash-bar .o{width:11px;height:11px;border-radius:50%;background:var(--line)}
 .dash-bar .o:nth-child(1){background:#ff5f57}.dash-bar .o:nth-child(2){background:#febc2e}.dash-bar .o:nth-child(3){background:#28c840}
@@ -237,7 +229,6 @@ section{position:relative;z-index:2}
 .dcard .k{font-family:'Space Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
 .dcard .v{font-family:'Anton';font-size:32px;margin-top:8px}
 .dcard .v small{font-size:14px;color:var(--ink-dim);font-family:'Archivo'}
-/* season bar */
 .season{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel)}
 .season .st{font-family:'Space Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
 .gantt{display:flex;flex-direction:column;gap:12px}
@@ -245,31 +236,44 @@ section{position:relative;z-index:2}
 .grow .gname{font-size:13.5px;color:var(--ink-dim)}
 .gtrack{position:relative;height:26px;background:var(--bg);border-radius:8px;border:1px solid var(--line);overflow:hidden}
 .gbar{position:absolute;top:3px;bottom:3px;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-family:'Space Mono';font-size:10.5px;color:#0a0c0a;font-weight:700;white-space:nowrap}
-.gbar.peak{background:var(--volt)}
-.gbar.build{background:rgba(90,209,230,.5);color:var(--ink)}
-.gbar.race{background:var(--clay)}
+.gbar.peak{background:var(--volt)} .gbar.build{background:rgba(90,209,230,.5);color:var(--ink)} .gbar.race{background:var(--clay)}
 
-/* ---------- features split ---------- */
-.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-@media(max-width:820px){.feat{grid-template-columns:1fr}}
-.fcard{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:var(--panel);transition:border-color .3s,transform .3s}
-.fcard:hover{border-color:var(--volt-deep);transform:translateY(-4px)}
-.fcard .fi{font-size:28px;width:54px;height:54px;border-radius:13px;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--line);margin-bottom:18px}
-.fcard h3{font-size:23px;margin-bottom:10px}
-.fcard p{color:var(--ink-dim);font-size:15.5px}
+/* alternating feature rows */
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:90px}
+.frow:last-child{margin-bottom:0}
+.frow.flip .ftxt{order:2}
+@media(max-width:860px){.frow,.frow.flip{grid-template-columns:1fr;gap:28px}.frow.flip .ftxt{order:0}}
+.ftxt .eyebrow{margin-bottom:14px;display:block}
+.ftxt h3{font-size:clamp(28px,3.6vw,42px);margin-bottom:16px}
+.ftxt p{color:var(--ink-dim);font-size:16.5px;margin-bottom:18px}
+.ftxt ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ftxt li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--ink-dim)}
+.ftxt li::before{content:"›";color:var(--volt);font-weight:700;font-family:'Space Mono'}
+.fimg{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;height:340px;background-size:cover;background-position:center;position:relative;box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
+.fimg::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 40%,rgba(10,12,10,.55))}
+.fimg .ov{position:absolute;left:16px;bottom:16px;z-index:2;font-family:'Space Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(10,12,10,.66);backdrop-filter:blur(4px);border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:var(--volt)}
 
-/* ---------- testimonials ---------- */
+/* integrations */
+.integ{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+@media(max-width:900px){.integ{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:560px){.integ{grid-template-columns:repeat(3,1fr)}}
+.itile{border:1px solid var(--line);border-radius:14px;background:var(--panel);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:.25s;text-align:center;padding:8px}
+.itile:hover{border-color:var(--volt);transform:translateY(-4px)}
+.itile .ii{font-size:24px}
+.itile .inm{font-family:'Space Mono';font-size:10.5px;letter-spacing:.04em;color:var(--ink-dim)}
+
+/* testimonials */
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:860px){.quotes{grid-template-columns:1fr}}
 .quote{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--panel)}
 .quote .stars{color:var(--volt);letter-spacing:3px;font-size:13px}
 .quote p{margin:16px 0 22px;font-size:16px;line-height:1.55}
 .quote .who{display:flex;align-items:center;gap:12px}
-.quote .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--volt),var(--sky));display:grid;place-items:center;font-family:'Anton';color:#0a0c0a;font-size:17px}
+.quote .av{width:46px;height:46px;border-radius:50%;background-size:cover;background-position:center;border:1px solid var(--line)}
 .quote .who .n{font-weight:600;font-size:14.5px}
 .quote .who .r{font-family:'Space Mono';font-size:11.5px;color:var(--ink-faint)}
 
-/* ---------- pricing ---------- */
+/* pricing */
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 @media(max-width:860px){.prices{grid-template-columns:1fr}}
 .price{border:1px solid var(--line);border-radius:var(--radius);padding:32px;background:var(--panel);display:flex;flex-direction:column}
@@ -282,22 +286,38 @@ section{position:relative;z-index:2}
 .price li{font-size:15px;color:var(--ink-dim);display:flex;gap:11px;align-items:flex-start}
 .price li::before{content:"›";color:var(--volt);font-weight:700;font-family:'Space Mono'}
 
-/* ---------- waitlist CTA ---------- */
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.team{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.team{grid-template-columns:1fr}}
+.member{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);transition:transform .3s,border-color .3s}
+.member:hover{transform:translateY(-6px);border-color:var(--volt)}
+.member.founder{border-color:var(--volt-deep);background:linear-gradient(180deg,rgba(212,255,63,.06),var(--panel))}
+.member .mph{height:230px;background-size:cover;background-position:center top;position:relative}
+.member .mph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,var(--panel))}
+.member .mb{padding:18px 20px 22px}
+.member .mb .role{font-family:'Space Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--volt-deep)}
+.member.founder .mb .role{color:var(--volt)}
+.member .mb h3{font-size:21px;margin:7px 0 4px;text-transform:none;font-family:'Anton';letter-spacing:.01em}
+.member .mb p{font-size:13.5px;color:var(--ink-dim);line-height:1.45}
+.member .tagrow{display:flex;gap:10px;margin-top:12px}
+.member .tagrow a{font-family:'Space Mono';font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
+.member .tagrow a:hover{color:var(--volt)}
+.fbadge{display:inline-block;font-family:'Space Mono';font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--volt);color:#0a0c0a;font-weight:700;padding:3px 9px;border-radius:100px;margin-left:8px;vertical-align:middle}
+
+/* final cta */
 .cta-final{position:relative;border:1px solid var(--line);border-radius:28px;overflow:hidden;padding:70px 40px;text-align:center;background:linear-gradient(180deg,var(--panel),var(--bg-2))}
 .cta-final .topo2{position:absolute;inset:0;opacity:.35;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%,transparent);mask-image:linear-gradient(180deg,transparent,#000 60%,transparent)}
 .cta-final h2{font-size:clamp(38px,6vw,76px);position:relative}
 .cta-final p{color:var(--ink-dim);max-width:520px;margin:18px auto 0;position:relative}
 .signup{margin:34px auto 0;display:flex;gap:10px;max-width:520px;position:relative;flex-wrap:wrap;justify-content:center}
-.signup input{
-  flex:1;min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:100px;
-  padding:15px 22px;color:var(--ink);font-family:'Space Mono';font-size:14px;outline:none;transition:border-color .25s;
-}
+.signup input{flex:1;min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:100px;padding:15px 22px;color:var(--ink);font-family:'Space Mono';font-size:14px;outline:none;transition:border-color .25s}
 .signup input:focus{border-color:var(--volt)}
 .signup .ok{font-family:'Space Mono';font-size:13px;color:var(--volt);width:100%;margin-top:6px;display:none}
 .signup.done .ok{display:block}
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;background:var(--bg-2)}
+/* footer */
+footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:96px;background:var(--bg-2)}
 .foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px}
 @media(max-width:760px){.foot{grid-template-columns:1fr 1fr}}
 .foot h4{font-family:'Space Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
@@ -309,7 +329,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
     <div class="brand">
@@ -318,25 +338,25 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
     </div>
     <nav class="nav-links">
       <a href="#sports">Sports</a>
-      <a href="#how">How it works</a>
+      <a href="#events">Events</a>
+      <a href="#ai">Tour AI</a>
       <a href="#product">Product</a>
+      <a href="#team">Team</a>
       <a href="#pricing">Pricing</a>
     </nav>
     <div class="nav-cta">
-      <a href="#how" class="btn btn-ghost">Log in</a>
-      <a href="#join" class="btn btn-primary">Join the waitlist</a>
+      <a href="#product" class="btn btn-ghost">Log in</a>
+      <a href="#join" class="btn btn-primary">Start free</a>
     </div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
   <svg class="hero-topo" viewBox="0 0 800 800" fill="none" stroke="#d4ff3f" stroke-width="1">
     <g opacity="0.6">
-      <path d="M50 400q150-220 380-120t320 60"/>
-      <path d="M30 460q160-200 400-110t330 50"/>
-      <path d="M10 520q170-180 420-100t340 40"/>
-      <path d="M90 340q140-230 360-130t300 70"/>
+      <path d="M50 400q150-220 380-120t320 60"/><path d="M30 460q160-200 400-110t330 50"/>
+      <path d="M10 520q170-180 420-100t340 40"/><path d="M90 340q140-230 360-130t300 70"/>
       <path d="M130 280q130-240 340-140t280 80"/>
       <circle cx="430" cy="280" r="6" fill="#d4ff3f" stroke="none"/>
       <circle cx="610" cy="360" r="5" fill="#ff6a3d" stroke="none"/>
@@ -346,19 +366,14 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
   <div class="wrap hero-grid">
     <div>
       <div class="tag-chips">
-        <span class="chip on">Cycling</span>
-        <span class="chip">Running</span>
-        <span class="chip">Triathlon</span>
-        <span class="chip">Chess</span>
-        <span class="chip">Climbing</span>
-        <span class="chip">+34 more</span>
+        <span class="chip on">Cycling</span><span class="chip">Running</span><span class="chip">Triathlon</span><span class="chip">Chess</span><span class="chip">Climbing</span><span class="chip">+33 more</span>
       </div>
       <h1>
         <span class="line"><span>Find every</span></span>
         <span class="line"><span>event in your</span></span>
         <span class="line"><span><em class="accent" style="font-style:normal">sport.</em></span></span>
       </h1>
-      <p class="lead">Athlete on Tour is the season engine for individual-sport athletes. Discover races and tournaments worldwide, build a smart calendar, and plan travel, peaks and logistics — all in one place.</p>
+      <p class="lead">The AI season engine for individual-sport athletes. Discover races and tournaments worldwide, build a smart calendar, and plan travel, peaks and logistics — all in one place.</p>
       <div class="cta-row">
         <a href="#join" class="btn btn-primary">Plan my season →</a>
         <a href="#product" class="btn btn-ghost">See the product</a>
@@ -366,29 +381,28 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
       <p class="trust">// Trusted by 12,400+ athletes across 38 sports &amp; 61 countries</p>
     </div>
 
-    <!-- live product card -->
     <div class="hero-card">
       <div class="hc-top">
         <span class="ttl">Your 2026 feed · Cycling</span>
         <span style="font-family:'Space Mono';font-size:11px;color:var(--ink-faint)"><span class="hc-dot"></span>LIVE</span>
       </div>
       <div class="event-row">
-        <div class="ev-date"><div class="d">14</div><div class="m">JUN</div></div>
-        <div><div class="ev-name">Dolomiti Gran Fondo</div><div class="ev-meta">Canazei, IT · 138km · 4,200m+</div></div>
+        <div class="ev-date"><div class="d">08</div><div class="m">MAR</div></div>
+        <div><div class="ev-name">Cape Town Cycle Tour</div><div class="ev-meta">Cape Town, ZA · 109km · 35k riders</div></div>
         <span class="ev-pill pill-go">Entered</span>
       </div>
       <div class="event-row">
-        <div class="ev-date"><div class="d">02</div><div class="m">JUL</div></div>
-        <div><div class="ev-name">Alpe d'Huez Climb TT</div><div class="ev-meta">Huez, FR · Spots filling</div></div>
+        <div class="ev-date"><div class="d">23</div><div class="m">AUG</div></div>
+        <div><div class="ev-name">Leadville Trail 100 MTB</div><div class="ev-meta">Colorado, US · 3,000m+ · Lottery</div></div>
         <span class="ev-pill pill-soon">Reg. opens</span>
       </div>
       <div class="event-row">
-        <div class="ev-date"><div class="d">23</div><div class="m">AUG</div></div>
-        <div><div class="ev-name">Haute Route Pyrenees</div><div class="ev-meta">3-day stage · Travel needed</div></div>
+        <div class="ev-date"><div class="d">11</div><div class="m">OCT</div></div>
+        <div><div class="ev-name">Roc d'Azur</div><div class="ev-meta">Fréjus, FR · Travel needed</div></div>
         <span class="ev-pill pill-watch">Watching</span>
       </div>
       <div class="event-row">
-        <div class="ev-date"><div class="d">11</div><div class="m">OCT</div></div>
+        <div class="ev-date"><div class="d">—</div><div class="m">2026</div></div>
         <div><div class="ev-name">UCI Gran Fondo Worlds</div><div class="ev-meta">Goal race · Peak target</div></div>
         <span class="ev-pill pill-go">A-race</span>
       </div>
@@ -396,16 +410,24 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
   </div>
 </section>
 
-<!-- ===== MARQUEE ===== -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Gran Fondos</span><span>Marathons</span><span>Trail Ultras</span><span>Open Chess</span><span>Triathlons</span><span>Time Trials</span><span>Climbing Comps</span><span>Track Meets</span><span>Swim Opens</span>
-    <span>Gran Fondos</span><span>Marathons</span><span>Trail Ultras</span><span>Open Chess</span><span>Triathlons</span><span>Time Trials</span><span>Climbing Comps</span><span>Track Meets</span><span>Swim Opens</span>
+<!-- LOGO CLOUD -->
+<div class="logos">
+  <div class="wrap">
+    <div class="lbl">Events synced from the bodies that run your sport</div>
+    <div class="logo-strip">
+      <div class="lg"><span>🚴</span>UCI</div>
+      <div class="lg"><span>🏃</span>World&nbsp;Athletics</div>
+      <div class="lg"><span>🏊</span>IRONMAN</div>
+      <div class="lg"><span>♟️</span>FIDE</div>
+      <div class="lg"><span>⛰️</span>UTMB</div>
+      <div class="lg"><span>🏅</span>Marathon&nbsp;Majors</div>
+      <div class="lg"><span>🧗</span>IFSC</div>
+    </div>
   </div>
 </div>
 
-<!-- ===== STATS ===== -->
-<section class="sec" style="padding-top:70px">
+<!-- METRICS -->
+<section class="sec" style="padding:70px 0 30px">
   <div class="wrap reveal">
     <div class="stats">
       <div class="stat"><div class="num" data-count="48200">0</div><div class="lbl">Events indexed</div></div>
@@ -416,28 +438,70 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
   </div>
 </section>
 
-<!-- ===== SPORTS ===== -->
-<section class="sec" id="sports" style="padding-top:30px">
+<!-- SPORTS -->
+<section class="sec" id="sports" style="padding-top:40px">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">// One platform, every discipline</span>
       <h2>Built for the <span class="accent">solo</span> athlete</h2>
-      <p>Team sports have leagues and fixtures handed to them. Individual athletes hunt across dozens of federation sites, forums and PDFs. We pulled it all into one feed.</p>
+      <p>Team sports get leagues and fixtures handed to them. Individual athletes hunt across dozens of federation sites, forums and PDFs. We pulled it all into one feed.</p>
     </div>
     <div class="sports reveal">
-      <div class="sport"><div class="ico">🚴</div><div><h3>Cycling</h3><div class="cnt">9,840 events</div></div></div>
-      <div class="sport"><div class="ico">🏃</div><div><h3>Running</h3><div class="cnt">14,210 events</div></div></div>
-      <div class="sport"><div class="ico">♟️</div><div><h3>Chess</h3><div class="cnt">3,120 tournaments</div></div></div>
-      <div class="sport"><div class="ico">🏊</div><div><h3>Swimming</h3><div class="cnt">2,640 events</div></div></div>
-      <div class="sport"><div class="ico">🧗</div><div><h3>Climbing</h3><div class="cnt">1,480 comps</div></div></div>
-      <div class="sport"><div class="ico">🏊‍♂️</div><div><h3>Triathlon</h3><div class="cnt">4,070 races</div></div></div>
-      <div class="sport"><div class="ico">🎾</div><div><h3>Tennis</h3><div class="cnt">5,300 draws</div></div></div>
-      <div class="sport"><div class="ico">⛷️</div><div><h3>+ 31 more</h3><div class="cnt">Rowing · Skiing · Judo …</div></div></div>
+      <div class="sport"><div class="ph" data-img="cycling,road,race"></div><div class="body"><div class="ico">🚴</div><h3>Cycling</h3><div class="cnt">9,840 events</div></div></div>
+      <div class="sport"><div class="ph" data-img="marathon,running,road"></div><div class="body"><div class="ico">🏃</div><h3>Running</h3><div class="cnt">14,210 events</div></div></div>
+      <div class="sport"><div class="ph" data-img="chess,tournament,board"></div><div class="body"><div class="ico">♟️</div><h3>Chess</h3><div class="cnt">3,120 tournaments</div></div></div>
+      <div class="sport"><div class="ph" data-img="triathlon,swim,open-water"></div><div class="body"><div class="ico">🏊</div><h3>Triathlon</h3><div class="cnt">4,070 races</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
+<!-- FEATURED EVENTS -->
+<section class="sec" id="events" style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// Live from the calendar</span>
+      <h2>Real events,<br><span class="accent">one feed</span></h2>
+      <p>A glimpse of what athletes are tracking right now — from 35,000-rider gran fondos to lottery-only ultras and grandmaster chess opens.</p>
+    </div>
+    <div class="events-grid reveal">
+      <div class="ecard">
+        <div class="pic" data-img="cape-town,cycling,road"><span class="badge">Cycling</span><span class="dt">08 Mar 2026</span></div>
+        <div class="ec-body"><h3>Cape Town Cycle Tour</h3><div class="loc">Cape Town, South Africa · 109 km</div><div class="tags"><span class="t">Gran Fondo</span><span class="t">35k riders</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="boston,marathon,running"><span class="badge">Running</span><span class="dt">20 Apr 2026</span></div>
+        <div class="ec-body"><h3>Boston Marathon</h3><div class="loc">Boston, USA · 42.2 km</div><div class="tags"><span class="t">Major</span><span class="t">Qualifier</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="trail,mountain,ultra"><span class="badge">Trail / MTB</span><span class="dt">23 Aug 2026</span></div>
+        <div class="ec-body"><h3>Leadville Trail 100 MTB</h3><div class="loc">Colorado, USA · 3,000 m+</div><div class="tags"><span class="t">Lottery</span><span class="t">Altitude</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="chess,tournament,competition"><span class="badge">Chess</span><span class="dt">Jan 2026</span></div>
+        <div class="ec-body"><h3>Tata Steel Chess Masters</h3><div class="loc">Wijk aan Zee, Netherlands</div><div class="tags"><span class="t">Super-GM</span><span class="t">Open side</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="alps,trail,running,mountain"><span class="badge">Trail</span><span class="dt">28 Aug 2026</span></div>
+        <div class="ec-body"><h3>UTMB Mont-Blanc</h3><div class="loc">Chamonix, France · 171 km</div><div class="tags"><span class="t">Running stones</span><span class="t">Iconic</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="berlin,marathon,city,running"><span class="badge">Running</span><span class="dt">27 Sep 2026</span></div>
+        <div class="ec-body"><h3>Berlin Marathon</h3><div class="loc">Berlin, Germany · 42.2 km</div><div class="tags"><span class="t">Major</span><span class="t">Fast course</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="triathlon,ironman,swimming"><span class="badge">Triathlon</span><span class="dt">Sep 2026</span></div>
+        <div class="ec-body"><h3>IRONMAN World Champs</h3><div class="loc">Nice, France · 226 km</div><div class="tags"><span class="t">Qualify only</span><span class="t">Long course</span></div></div>
+      </div>
+      <div class="ecard">
+        <div class="pic" data-img="mountain-bike,france,forest"><span class="badge">MTB</span><span class="dt">11 Oct 2026</span></div>
+        <div class="ec-body"><h3>Roc d'Azur</h3><div class="loc">Fréjus, France · 20k+ riders</div><div class="tags"><span class="t">Festival</span><span class="t">World's largest</span></div></div>
+      </div>
+    </div>
+    <p class="real-note reveal">// Dates shown are real 2026 fixtures (Cape Town · Leadville · Roc d'Azur · Marathon Majors · UTMB · Tata Steel). Prototype data — verify on the official event site before entering.</p>
+  </div>
+</section>
+
+<!-- HOW -->
 <section class="sec" id="how">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -445,26 +509,52 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
       <h2>Three moves to a<br><span class="accent">planned season</span></h2>
     </div>
     <div class="steps reveal">
-      <div class="step">
-        <div class="no">STEP 01</div>
-        <h3>Discover</h3>
-        <p>Pick your sport, level and home base. We surface every relevant event — local club races to world championships — ranked by fit, distance and date.</p>
-      </div>
-      <div class="step">
-        <div class="no">STEP 02</div>
-        <h3>Schedule</h3>
-        <p>Drop events into your season calendar. Set A / B / C priorities, and we auto-block build phases, taper weeks and recovery around your goal races.</p>
-      </div>
-      <div class="step">
-        <div class="no">STEP 03</div>
-        <h3>Go on tour</h3>
-        <p>Registration deadlines, travel, lodging near the start line and start-list intel — tracked per event so nothing slips through the cracks.</p>
+      <div class="step"><div class="no">STEP 01</div><h3>Discover</h3><p>Pick your sport, level and home base. We surface every relevant event — local club races to world championships — ranked by fit, distance and date.</p></div>
+      <div class="step"><div class="no">STEP 02</div><h3>Schedule</h3><p>Drop events into your season calendar. Set A / B / C priorities, and we auto-block build phases, taper weeks and recovery around your goal races.</p></div>
+      <div class="step"><div class="no">STEP 03</div><h3>Go on tour</h3><p>Registration deadlines, travel, lodging near the start line and start-list intel — tracked per event so nothing slips through the cracks.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="sec" id="ai" style="padding-top:30px">
+  <div class="wrap reveal">
+    <div class="ai">
+      <div class="ai-grid">
+        <div class="ai-copy">
+          <span class="eyebrow sky">// Meet Tour AI</span>
+          <h2>Your season, <span class="sky">planned by AI</span></h2>
+          <p>Tour AI reads 48,000+ events, your history and your goals — then builds a season you'd otherwise spend weekends researching. Ask in plain language, get a race plan back.</p>
+          <div class="ai-feats">
+            <div class="af"><div class="ai-ic">💬</div><div><h4>Natural-language search</h4><p>“Find me a hilly 100-mile gran fondo in Europe in September, beginner-friendly” — done.</p></div></div>
+            <div class="af"><div class="ai-ic">🗓️</div><div><h4>Auto season builder</h4><p>Give it your A-race; it back-fills build races, taper and recovery with the right spacing.</p></div></div>
+            <div class="af"><div class="ai-ic">🎯</div><div><h4>Smart recommendations</h4><p>Learns your terrain, distance and travel limits to surface events you'd actually love.</p></div></div>
+            <div class="af"><div class="ai-ic">⏰</div><div><h4>Deadline &amp; lottery radar</h4><p>Predicts when popular races sell out and nudges you before registration closes.</p></div></div>
+          </div>
+        </div>
+        <div class="ai-demo">
+          <div class="chat" id="chat">
+            <div class="bubble user">Plan an A-race season around UCI Gran Fondo Worlds, I'm in Italy and love climbing.</div>
+            <div class="bubble bot">
+              <div class="bhead"><span class="hc-dot"></span>Tour AI</div>
+              Here's a peaked build toward your A-race. 3 tune-ups, climbing-heavy, all within a short flight:
+              <div style="margin-top:12px">
+                <div class="bot-ev"><span>Maratona dles Dolomites</span><span class="be-m">Jul · B</span></div>
+                <div class="bot-ev"><span>La Marmotte — Alpe d'Huez</span><span class="be-m">Jul · B</span></div>
+                <div class="bot-ev"><span>Haute Route Dolomites</span><span class="be-m">Aug · C</span></div>
+                <div class="bot-ev"><span>★ UCI Gran Fondo Worlds</span><span class="be-m">Oct · A</span></div>
+              </div>
+              <div style="margin-top:12px;font-size:13px;color:var(--ink-dim)">Added a 2-week taper before the A-race. Want me to drop these on your calendar?</div>
+            </div>
+            <div class="typing" id="typing"><i></i><i></i><i></i></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCT / DASHBOARD MOCK ===== -->
+<!-- PRODUCT DASHBOARD MOCK -->
 <section class="sec" id="product" style="padding-top:30px">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -472,38 +562,27 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
       <h2>Your whole year,<br>on <span class="accent">one screen</span></h2>
       <p>This is the planner athletes log into every week — events, periodization and logistics living side by side.</p>
     </div>
-
     <div class="dash reveal">
-      <div class="dash-bar">
-        <span class="o"></span><span class="o"></span><span class="o"></span>
-        <span class="url">athlete-on-tour.com/season/2026</span>
-      </div>
+      <div class="dash-bar"><span class="o"></span><span class="o"></span><span class="o"></span><span class="url">athlete-on-tour.com/season/2026</span></div>
       <div class="dash-body">
         <aside class="dash-side">
           <div class="s-grp">Plan</div>
-          <div class="s-item on">📅 Season</div>
-          <div class="s-item">🧭 Discover</div>
-          <div class="s-item">🎯 Goal races</div>
+          <div class="s-item on">📅 Season</div><div class="s-item">🧭 Discover</div><div class="s-item">🎯 Goal races</div>
           <div class="s-grp">Tour</div>
-          <div class="s-item">✈️ Travel</div>
-          <div class="s-item">📋 Deadlines</div>
-          <div class="s-item">📊 Form &amp; load</div>
+          <div class="s-item">✈️ Travel</div><div class="s-item">📋 Deadlines</div><div class="s-item">🤖 Tour AI</div>
         </aside>
         <main class="dash-main">
-          <div class="dh">
-            <h3>2026 Season</h3>
-            <a href="#join" class="btn btn-primary" style="padding:11px 20px">+ Add event</a>
-          </div>
+          <div class="dh"><h3>2026 Season</h3><a href="#join" class="btn btn-primary" style="padding:11px 20px">+ Add event</a></div>
           <div class="dash-cards">
             <div class="dcard"><div class="k">Events planned</div><div class="v">17</div></div>
-            <div class="dcard"><div class="k">Next deadline</div><div class="v">6 <small>days · Alpe TT</small></div></div>
+            <div class="dcard"><div class="k">Next deadline</div><div class="v">6 <small>days · Leadville</small></div></div>
             <div class="dcard"><div class="k">A-race countdown</div><div class="v">137 <small>days</small></div></div>
           </div>
           <div class="season">
-            <div class="st">Periodization · Jun → Oct</div>
+            <div class="st">Periodization · Jun → Oct · auto-built by Tour AI</div>
             <div class="gantt">
               <div class="grow"><div class="gname">Base / Build</div><div class="gtrack"><div class="gbar build" style="left:2%;width:34%">Build block</div></div></div>
-              <div class="grow"><div class="gname">Dolomiti GF</div><div class="gtrack"><div class="gbar race" style="left:30%;width:14%">B-race</div></div></div>
+              <div class="grow"><div class="gname">Maratona Dolomites</div><div class="gtrack"><div class="gbar race" style="left:30%;width:14%">B-race</div></div></div>
               <div class="grow"><div class="gname">Haute Route</div><div class="gtrack"><div class="gbar race" style="left:55%;width:16%">Stage race</div></div></div>
               <div class="grow"><div class="gname">GF Worlds</div><div class="gtrack"><div class="gbar peak" style="left:82%;width:16%">★ PEAK</div></div></div>
             </div>
@@ -514,53 +593,138 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
   </div>
 </section>
 
-<!-- ===== FEATURES ===== -->
+<!-- ALTERNATING FEATURE ROWS -->
 <section class="sec" id="features">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">// Depth where it matters</span>
-      <h2>More than a<br>events <span class="accent">list</span></h2>
+      <h2>More than an<br>events <span class="accent">list</span></h2>
     </div>
-    <div class="feat reveal">
-      <div class="fcard"><div class="fi">🧭</div><h3>Smart discovery</h3><p>Filter 48k+ events by distance, terrain, prize money, federation, qualification path and travel radius. Saved searches alert you the moment registration opens.</p></div>
-      <div class="fcard"><div class="fi">📅</div><h3>Periodized calendar</h3><p>Tag A/B/C races and we lay out build, peak and taper phases automatically — exportable to Google Calendar, TrainingPeaks and your watch.</p></div>
-      <div class="fcard"><div class="fi">✈️</div><h3>Tour logistics</h3><p>Flights, lodging near the start, rental gear and bike-box rules per event. Going on tour shouldn't mean 14 browser tabs.</p></div>
-      <div class="fcard"><div class="fi">🔔</div><h3>Deadline guard</h3><p>Registration closes, lottery dates, qualifying windows and bib transfer deadlines — tracked and nudged before you miss them.</p></div>
-      <div class="fcard"><div class="fi">📊</div><h3>Start-list intel</h3><p>See who else has entered, past results and course records. Know the field before you toe the line.</p></div>
-      <div class="fcard"><div class="fi">👥</div><h3>Travel crew</h3><p>Find athletes heading to the same event to split lodging, rides and a shared warm-up. Tour solo, never alone.</p></div>
+
+    <div class="frow reveal">
+      <div class="ftxt">
+        <span class="eyebrow">// Discovery</span>
+        <h3>Every event, filtered to fit you</h3>
+        <p>Search 48k+ events by distance, terrain, prize money, federation, qualification path and travel radius. Saved searches alert you the moment registration opens.</p>
+        <ul><li>Smart filters across 38 sports</li><li>Fit score based on your level &amp; history</li><li>Instant alerts on new &amp; reopened events</li></ul>
+      </div>
+      <div class="fimg" data-img="cyclist,mountain,road,europe"><span class="ov">Discover · 48,200 events</span></div>
+    </div>
+
+    <div class="frow flip reveal">
+      <div class="ftxt">
+        <span class="eyebrow">// Periodized calendar</span>
+        <h3>A calendar that trains with you</h3>
+        <p>Tag A/B/C races and we lay out build, peak and taper phases automatically — then export to Google Calendar, TrainingPeaks and your watch.</p>
+        <ul><li>Auto build / peak / taper blocks</li><li>Conflict &amp; recovery warnings</li><li>One-click export &amp; sync</li></ul>
+      </div>
+      <div class="fimg" data-img="running,sunrise,training,track"><span class="ov">Schedule · auto periodization</span></div>
+    </div>
+
+    <div class="frow reveal">
+      <div class="ftxt">
+        <span class="eyebrow">// Tour logistics</span>
+        <h3>Going on tour, without 14 tabs</h3>
+        <p>Flights, lodging near the start, rental gear, bike-box rules and start-list intel — tracked per event so race week runs itself.</p>
+        <ul><li>Travel &amp; lodging near the start line</li><li>Start-list &amp; past-results intel</li><li>Find a travel crew to split costs</li></ul>
+      </div>
+      <div class="fimg" data-img="travel,airport,bike,luggage"><span class="ov">Tour · logistics handled</span></div>
     </div>
   </div>
 </section>
 
-<!-- ===== TESTIMONIALS ===== -->
-<section class="sec" id="voices" style="padding-top:30px">
+<!-- INTEGRATIONS -->
+<section class="sec" id="integrations" style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">// Plays nice with your stack</span>
+      <h2>Syncs with the<br>tools you <span class="accent">already use</span></h2>
+    </div>
+    <div class="integ reveal">
+      <div class="itile"><div class="ii">🟧</div><div class="inm">Strava</div></div>
+      <div class="itile"><div class="ii">⌚</div><div class="inm">Garmin</div></div>
+      <div class="itile"><div class="ii">📈</div><div class="inm">TrainingPeaks</div></div>
+      <div class="itile"><div class="ii">🗺️</div><div class="inm">Komoot</div></div>
+      <div class="itile"><div class="ii">🚴</div><div class="inm">Zwift</div></div>
+      <div class="itile"><div class="ii">💨</div><div class="inm">Wahoo</div></div>
+      <div class="itile"><div class="ii">📅</div><div class="inm">Google Cal</div></div>
+      <div class="itile"><div class="ii">🍎</div><div class="inm">Apple Health</div></div>
+      <div class="itile"><div class="ii">♟️</div><div class="inm">Chess.com</div></div>
+      <div class="itile"><div class="ii">🏃</div><div class="inm">Runna</div></div>
+      <div class="itile"><div class="ii">🔗</div><div class="inm">Webhooks</div></div>
+      <div class="itile"><div class="ii">⚡</div><div class="inm">API</div></div>
+      <div class="itile"><div class="ii">📨</div><div class="inm">Slack</div></div>
+      <div class="itile"><div class="ii">➕</div><div class="inm">More</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="voices">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">// Early athletes</span>
       <h2>Why they <span class="accent">switched</span></h2>
     </div>
     <div class="quotes reveal">
-      <div class="quote">
-        <div class="stars">★★★★★</div>
-        <p>“I used to keep my whole race year in a spreadsheet and three forums. Now it's one feed and the deadline alerts alone have saved my season twice.”</p>
-        <div class="who"><div class="av">EL</div><div><div class="n">Elena Marchetti</div><div class="r">Gran Fondo · Italy</div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“I used to keep my whole race year in a spreadsheet and three forums. Now it's one feed and the deadline alerts alone have saved my season twice.”</p><div class="who"><div class="av" data-img="portrait,woman,athlete"></div><div><div class="n">Elena Marchetti</div><div class="r">Gran Fondo · Italy</div></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“As a masters runner I travel for races. The travel + start-list view means I rock up knowing the course and where I'm sleeping. Game changer.”</p><div class="who"><div class="av" data-img="portrait,man,runner"></div><div><div class="n">David Køhler</div><div class="r">Marathon · Denmark</div></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>“Even for chess it nails it — open tournaments, rating bands, entry fees and travel in one place. The AI planner found two events I'd never have spotted.”</p><div class="who"><div class="av" data-img="portrait,man,glasses"></div><div><div class="n">Anush Sargsyan</div><div class="r">Chess · Armenia</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" id="team" style="padding-top:30px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// The crew behind the tour</span>
+      <h2>Built by <span class="accent">athletes</span>,<br>for athletes</h2>
+      <p>A small team that got tired of planning seasons across spreadsheets and forums — so we built the tool we wanted.</p>
+    </div>
+    <div class="team reveal">
+      <div class="member founder">
+        <div class="mph" data-img="portrait,man,founder,professional"></div>
+        <div class="mb">
+          <div class="role">Founder &amp; CEO<span class="fbadge">Founder</span></div>
+          <h3>Yariv Gavriel</h3>
+          <p>Engineer, endurance athlete and lifelong solo-sport competitor. Started Athlete on Tour after one too many missed registration deadlines.</p>
+          <div class="tagrow"><a href="#">LinkedIn ↗</a><a href="mailto:yariv@athlete-on-tour.com">Email ↗</a></div>
+        </div>
       </div>
-      <div class="quote">
-        <div class="stars">★★★★★</div>
-        <p>“As a masters runner I travel for races. The travel + start-list view means I rock up knowing the course and where I'm sleeping. Game changer.”</p>
-        <div class="who"><div class="av">DK</div><div><div class="n">David Køhler</div><div class="r">Marathon · Denmark</div></div></div>
+      <div class="member">
+        <div class="mph" data-img="portrait,woman,designer"></div>
+        <div class="mb">
+          <div class="role">Head of Product</div>
+          <h3>Maya Lindqvist</h3>
+          <p>Former triathlete and product lead. Turns messy event data into a calendar athletes actually love.</p>
+          <div class="tagrow"><a href="#">LinkedIn ↗</a></div>
+        </div>
       </div>
-      <div class="quote">
-        <div class="stars">★★★★★</div>
-        <p>“Even for chess it nails it — open tournaments, rating bands, entry fees and travel in one place. Didn't expect my sport to be covered this well.”</p>
-        <div class="who"><div class="av">AS</div><div><div class="n">Anush Sargsyan</div><div class="r">Chess · Armenia</div></div></div>
+      <div class="member">
+        <div class="mph" data-img="portrait,man,engineer,developer"></div>
+        <div class="mb">
+          <div class="role">Founding Engineer</div>
+          <h3>Tomás Reyes</h3>
+          <p>Builds the ingestion engine pulling 48k+ events from federations worldwide. Weekend gravel racer.</p>
+          <div class="tagrow"><a href="#">GitHub ↗</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="mph" data-img="portrait,woman,scientist,ai"></div>
+        <div class="mb">
+          <div class="role">AI &amp; Data</div>
+          <h3>Dr. Priya Nair</h3>
+          <p>Leads Tour AI — the season planner and recommendation models. PhD in ML, marathoner.</p>
+          <div class="tagrow"><a href="#">LinkedIn ↗</a></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PRICING ===== -->
-<section class="sec" id="pricing">
+<!-- PRICING -->
+<section class="sec" id="pricing" style="padding-top:30px">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">// Simple, athlete-friendly</span>
@@ -568,44 +732,25 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
     </div>
     <div class="prices reveal">
       <div class="price">
-        <div class="pname">Base</div>
-        <div class="amt">€0<small>/forever</small></div>
-        <ul>
-          <li>Full event discovery, all 38 sports</li>
-          <li>Personal season calendar</li>
-          <li>3 deadline alerts</li>
-          <li>Google Calendar export</li>
-        </ul>
+        <div class="pname">Base</div><div class="amt">€0<small>/forever</small></div>
+        <ul><li>Full event discovery, all 38 sports</li><li>Personal season calendar</li><li>3 deadline alerts</li><li>Google Calendar export</li></ul>
         <a href="#join" class="btn btn-ghost" style="justify-content:center">Start free</a>
       </div>
       <div class="price hot">
-        <div class="pname">Pro</div>
-        <div class="amt">€7<small>/month</small></div>
-        <ul>
-          <li>Everything in Base</li>
-          <li>Unlimited alerts &amp; saved searches</li>
-          <li>Auto periodization &amp; taper blocks</li>
-          <li>Tour logistics + travel crew</li>
-          <li>Start-list intel</li>
-        </ul>
+        <div class="pname">Pro</div><div class="amt">€7<small>/month</small></div>
+        <ul><li>Everything in Base</li><li><strong style="color:var(--ink)">Tour AI</strong> season planner</li><li>Unlimited alerts &amp; saved searches</li><li>Tour logistics + travel crew</li><li>Start-list intel &amp; all integrations</li></ul>
         <a href="#join" class="btn btn-primary" style="justify-content:center">Go Pro</a>
       </div>
       <div class="price">
-        <div class="pname">Club</div>
-        <div class="amt">€29<small>/month</small></div>
-        <ul>
-          <li>Up to 20 athletes</li>
-          <li>Coach view &amp; shared calendars</li>
-          <li>Squad travel coordination</li>
-          <li>Priority new-sport requests</li>
-        </ul>
+        <div class="pname">Club</div><div class="amt">€29<small>/month</small></div>
+        <ul><li>Up to 20 athletes</li><li>Coach view &amp; shared calendars</li><li>Squad travel coordination</li><li>Priority new-sport requests</li></ul>
         <a href="#join" class="btn btn-ghost" style="justify-content:center">Talk to us</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA / WAITLIST ===== -->
+<!-- FINAL CTA -->
 <section class="sec" id="join" style="padding-top:30px">
   <div class="wrap">
     <div class="cta-final reveal">
@@ -615,7 +760,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
       </svg>
       <span class="eyebrow">// Closed beta · Spots limited</span>
       <h2>Plan your<br>season today</h2>
-      <p>Join 12,400+ athletes building smarter seasons. Drop your email and we'll send your invite to athlete-on-tour.com.</p>
+      <p>Join 12,400+ athletes building smarter seasons with Tour AI. Drop your email and we'll send your invite to athlete-on-tour.com.</p>
       <form class="signup" id="signupForm" onsubmit="return joinWaitlist(event)">
         <input type="email" id="emailInput" placeholder="you@athlete-on-tour.com" required />
         <button class="btn btn-primary" type="submit">Get my invite →</button>
@@ -625,26 +770,17 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot">
       <div>
         <div class="brand"><span class="mark">▲</span><span>Athlete on Tour</span></div>
-        <p class="blurb">The season engine for individual-sport athletes. Discover, schedule, and tour — worldwide.</p>
+        <p class="blurb">The AI season engine for individual-sport athletes. Discover, schedule, and tour — worldwide.</p>
       </div>
-      <div>
-        <h4>Product</h4>
-        <a href="#sports">Sports</a><a href="#how">How it works</a><a href="#product">The cockpit</a><a href="#pricing">Pricing</a>
-      </div>
-      <div>
-        <h4>Sports</h4>
-        <a href="#sports">Cycling</a><a href="#sports">Running</a><a href="#sports">Triathlon</a><a href="#sports">Chess</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#join">Join waitlist</a><a href="mailto:hello@athlete-on-tour.com">hello@athlete-on-tour.com</a><a href="#">Manifesto</a><a href="#">Careers</a>
-      </div>
+      <div><h4>Product</h4><a href="#sports">Sports</a><a href="#events">Events</a><a href="#ai">Tour AI</a><a href="#pricing">Pricing</a></div>
+      <div><h4>Sports</h4><a href="#sports">Cycling</a><a href="#sports">Running</a><a href="#sports">Triathlon</a><a href="#sports">Chess</a></div>
+      <div><h4>Company</h4><a href="#team">Team</a><a href="#join">Join waitlist</a><a href="mailto:hello@athlete-on-tour.com">hello@athlete-on-tour.com</a><a href="#">Manifesto</a><a href="#">Careers</a></div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Athlete on Tour</span>
@@ -654,11 +790,22 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px;margin-top:100px;bac
 </footer>
 
 <script>
+// lazy-load images via loremflickr with gradient fallback
+const palettes=['linear-gradient(135deg,#1b211a,#2a3327)','linear-gradient(135deg,#16203a,#1b211a)','linear-gradient(135deg,#2a1a14,#1b211a)'];
+document.querySelectorAll('[data-img]').forEach((el,i)=>{
+  el.style.background=palettes[i%palettes.length];el.style.backgroundSize='cover';
+  const kw=encodeURIComponent(el.dataset.img);
+  const url='https://loremflickr.com/640/440/'+kw+'?lock='+(i+11);
+  const img=new Image();
+  img.onload=()=>{el.style.backgroundImage="url('"+url+"')";el.style.backgroundPosition='center';el.style.backgroundSize='cover';};
+  img.src=url;
+});
+
 // scroll reveal
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// count-up stats
+// count-up
 function fmt(n){return n>=1000?Math.round(n).toLocaleString():Math.round(n)}
 const cio=new IntersectionObserver((es)=>{es.forEach(e=>{
   if(!e.isIntersecting)return; cio.unobserve(e.target);
@@ -668,13 +815,23 @@ const cio=new IntersectionObserver((es)=>{es.forEach(e=>{
 })},{threshold:.6});
 document.querySelectorAll('.num[data-count]').forEach(el=>cio.observe(el));
 
-// chips toggle (demo interactivity)
+// AI chat: reveal answer after a typing beat when scrolled into view
+const chatBot=document.querySelector('#chat .bubble.bot');
+const typing=document.getElementById('typing');
+if(chatBot){chatBot.style.display='none';
+  const aio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){aio.disconnect();
+    setTimeout(()=>{typing.style.display='none';chatBot.style.display='block';},1600);
+  }})},{threshold:.5});
+  aio.observe(document.getElementById('ai'));
+}
+
+// chips toggle
 document.querySelectorAll('.tag-chips .chip').forEach(c=>c.addEventListener('click',()=>{
   document.querySelectorAll('.tag-chips .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
 }));
 
 // waitlist
-function joinWaitlist(e){e.preventDefault();const f=document.getElementById('signupForm');f.classList.add('done');document.getElementById('emailInput').value='';return false;}
+function joinWaitlist(e){e.preventDefault();document.getElementById('signupForm').classList.add('done');document.getElementById('emailInput').value='';return false;}
 </script>
 </body>
 </html>
